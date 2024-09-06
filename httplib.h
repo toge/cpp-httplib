@@ -355,11 +355,11 @@ struct case_ignore_equal {
 };
 
 struct case_ignore_hash {
-  constexpr size_t operator()(const std::string &key) const {
+  size_t operator()(const std::string &key) const {
     return hash_core(key.data(), key.size(), 0);
   }
 
-  constexpr size_t hash_core(const char *s, size_t l, size_t h) const {
+  size_t hash_core(const char *s, size_t l, size_t h) const {
     return (l == 0)
                ? h
                : hash_core(s + 1, l - 1,
